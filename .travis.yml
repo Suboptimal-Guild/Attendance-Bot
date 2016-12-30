@@ -1,8 +1,16 @@
+sudo: required
 language: python
 python:
   - "3.5"
+services:
+  - docker
 cache: pip
 install:
-  - pip install -r requirements.txt
+  - pip install -r rquirements.txt
+  - docker pull jfloff/alpine-python:latest-slim
+  - docker build -t riggbot .
+  - docker run riggbot
 script:
+  script:
+  - docker ps | grep -q blog
   - pytest
