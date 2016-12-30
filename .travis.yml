@@ -4,12 +4,9 @@ python:
   - "3.5"
 services:
   - docker
-cache: pip
 install:
-  - pip install -r requirements.txt
   - docker pull jfloff/alpine-python:latest-slim
   - docker build -t riggbot .
   - docker run riggbot exit
 script:
   - docker ps | grep -q blog
-  - pytest
