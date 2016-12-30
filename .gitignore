@@ -90,3 +90,6 @@ ENV/
 
 # Stuff that needs to be kept confidential
 .credentials/*
+
+# We want the .credentials folder, just not the files within.
+!.credentials/.gitkeep
