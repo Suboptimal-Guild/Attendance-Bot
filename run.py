@@ -3,11 +3,13 @@ import argparse
 
 import discord
 import asyncio
-from attendance import print_attendance, generate_post_out
+from commands.attendance import print_attendance, generate_post_out
 
+# Development Constants
 DEV_BOT_NAME = "Riggbot-Dev"
 DEV_BOT_KEY = "MjY0MTIyNzMzMTAzODA4NTEy.C0b_Gg.cwC9mmjMfJcOc_6tEBeIemigiHA"
 
+# Production Constants
 PRODUCTION_BOT_NAME = "Riggbot"
 PRODUCTION_BOT_KEY = "MjY0MTIyNTg5Mjg1MzE4NjU2.C0b_Wg.pg7X_dSFEetlSrBwk-WHMA4YnW0"
 
@@ -34,6 +36,7 @@ async def on_message(message): # placeholder "bookmarks"
     # Generate a post out event.
     elif message.content.startswith('!postout') or message.content.startswith('!late') or message.content.startswith('!absent'):
         await generate_post_out(client, message)
+
 if __name__ == "__main__":
     '''
     Add two mutually exclusive commands, where one of the two is required for the

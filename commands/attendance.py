@@ -3,8 +3,8 @@ import datetime
 from time import strftime
 import asyncio
 
-from googcal import create_post_out
-from googcal import get_post_outs
+from google.googcal import create_post_out
+from google.googcal import get_post_outs
 
 async def print_attendance(client, message):
     events = get_post_outs()
