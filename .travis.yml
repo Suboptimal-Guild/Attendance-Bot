@@ -7,6 +7,6 @@ services:
 install:
   - docker pull jfloff/alpine-python:latest-slim
   - docker build -t riggbot .
-  - docker run -td riggbot
+  - docker run -td riggbot python3 run.py --dev
 script:
   - docker ps | grep riggbot
