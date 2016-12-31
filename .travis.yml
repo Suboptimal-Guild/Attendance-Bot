@@ -7,6 +7,6 @@ services:
 install:
   - docker pull jfloff/alpine-python:latest-slim
   - docker build -t riggbot .
-  - docker run riggbot exit
+  - docker run -td riggbot
 script:
   - docker ps | grep -q blog
