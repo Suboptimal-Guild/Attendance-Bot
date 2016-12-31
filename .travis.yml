@@ -9,4 +9,4 @@ install:
   - docker build -t riggbot .
   - docker run -td riggbot
 script:
-  - docker ps | grep -q blog
+  - docker ps | grep riggbot
