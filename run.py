@@ -53,6 +53,6 @@ if __name__ == "__main__":
     if args.dev:
         client.run(DEV_BOT_KEY)
     elif args.prod:
-        client.run(DEV_BOT_NAME)
+        client.run(PRODUCTION_BOT_KEY)
     else:
         print("RIP in peace.")
