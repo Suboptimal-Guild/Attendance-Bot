@@ -13,6 +13,3 @@ COPY .credentials /root/.credentials
 
 # Add all of the python packages we need.
 RUN pip install -r requirements.txt
-
-# Define the command.
-CMD ["python", "/run.py", "-d"]
