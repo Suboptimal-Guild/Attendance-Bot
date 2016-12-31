@@ -1,0 +1,12 @@
+sudo: required
+language: python
+python:
+  - "3.5"
+services:
+  - docker
+install:
+  - docker pull jfloff/alpine-python:latest-slim
+  - docker build -t riggbot .
+  - docker run -td riggbot
+script:
+  - docker ps | grep riggbot
