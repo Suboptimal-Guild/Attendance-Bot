@@ -6,7 +6,7 @@ services:
   - docker
 install:
   - docker pull jfloff/alpine-python:latest-slim
-  - docker build -t riggbot .
-  - docker run -td riggbot python3 run.py --dev
+  - docker build -t attendance-bot .
+  - docker run -td attendance-bot python3 run.py --dev
 script:
-  - docker ps | grep riggbot
+  - docker ps | grep attendance-bot
