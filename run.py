@@ -1,17 +1,16 @@
 #!/usr/bin/python
 import argparse
-
 import discord
 import asyncio
+import os
+
 from commands.attendance import print_attendance, generate_post_out
 
 # Development Constants
 DEV_BOT_NAME = "Riggbot-Dev"
-DEV_BOT_KEY = "MjY0MTIyNzMzMTAzODA4NTEy.C0b_Gg.cwC9mmjMfJcOc_6tEBeIemigiHA"
 
 # Production Constants
 PRODUCTION_BOT_NAME = "Riggbot"
-PRODUCTION_BOT_KEY = "MjY0MTIyNTg5Mjg1MzE4NjU2.C0b_Wg.pg7X_dSFEetlSrBwk-WHMA4YnW0"
 
 client = discord.Client()
 
@@ -51,8 +50,8 @@ if __name__ == "__main__":
     client.accept_invite('https://discord.gg/mM5fXCe')
 
     if args.dev:
-        client.run(DEV_BOT_KEY)
+        client.run(os.environ['ATTENDANCE_BOT_DEVELOPMENT_TOKEN'])
     elif args.prod:
-        client.run(DEV_BOT_NAME)
+        client.run(os.environ['ATTENDANCE_BOT_PRODUCTION_TOKEN'])
     else:
         print("RIP in peace.")
