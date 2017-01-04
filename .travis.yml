@@ -7,7 +7,7 @@ services:
 install:
   - docker pull jfloff/alpine-python:latest-slim
   - docker build -t attendance-bot .
-  - docker run -td attendance-bot python3 run.py --dev
+  - docker run -td -e ATTENDANCE_BOT_DEVELOPMENT_TOKEN -e ATTENDANCE_BOT_PRODUCTION_TOKEN attendance-bot python3 run.py --dev
 script:
   - docker ps | grep attendance-bot
 env:
