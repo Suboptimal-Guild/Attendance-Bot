@@ -1,17 +1,25 @@
 #!/usr/bin/python
 import argparse
-
 import discord
 import asyncio
+import os
+
 from commands.attendance import print_attendance, generate_post_out
 
 # Development Constants
+<<<<<<< HEAD
 DEV_BOT_NAME = "Riggbot-Dev"
-DEV_BOT_KEY = "MjY0MTIyNzMzMTAzODA4NTEy.C0b_Gg.cwC9mmjMfJcOc_6tEBeIemigiHA"
 
 # Production Constants
 PRODUCTION_BOT_NAME = "Riggbot"
-PRODUCTION_BOT_KEY = "MjY0MTIyNTg5Mjg1MzE4NjU2.C0b_Wg.pg7X_dSFEetlSrBwk-WHMA4YnW0"
+=======
+DEV_BOT_NAME = "김정은-Dev"
+DEV_BOT_KEY = "MjY0NjEzMjYxMzM1NDYxODg4.C0jH0w.JgIQpBMbBzPULupWpETORGUTGtI"
+
+# Production Constants
+PRODUCTION_BOT_NAME = "김정은"
+PRODUCTION_BOT_KEY = "MjY0NjEyNzE4MDc2NjI0ODk3.C0jHUg.Pc3iVPh38-hyOTfH3OCinJp6q6M"
+>>>>>>> 92f8861a5d25446c67d6805c3b5525ee03893702
 
 client = discord.Client()
 
@@ -30,12 +38,12 @@ async def on_message(message): # placeholder "bookmarks"
         pass
     elif message.content.startswith("!test"):
         await client.send_message(message.channel, 'I\'m a fuckboy.')
-    # Print the upcoming post outs.
-    elif message.content.startswith('!attendance'):
-        await print_attendance(client, message)
-    # Generate a post out event.
-    elif message.content.startswith('!postout') or message.content.startswith('!late') or message.content.startswith('!absent'):
-        await generate_post_out(client, message)
+    elif message.content.startswith('!epgp export') and is_officer(message.author):
+        await update_EPGP(client, message)
+    elif message.content.startswith('!epgp leaderboard'):
+        await print_EPGP_leaderboard(client, message)
+    elif message.content.startswith('!epgp'):
+        await print_EPGP(client, message)
 
 if __name__ == "__main__":
     '''
@@ -51,8 +59,12 @@ if __name__ == "__main__":
     client.accept_invite('https://discord.gg/mM5fXCe')
 
     if args.dev:
-        client.run(DEV_BOT_KEY)
+        client.run(os.environ['ATTENDANCE_BOT_DEVELOPMENT_TOKEN'])
     elif args.prod:
-        client.run(DEV_BOT_NAME)
+<<<<<<< HEAD
+        client.run(os.environ['ATTENDANCE_BOT_PRODUCTION_TOKEN'])
+=======
+        client.run(PRODUCTION_BOT_KEY)
+>>>>>>> 92f8861a5d25446c67d6805c3b5525ee03893702
     else:
         print("RIP in peace.")
