@@ -64,9 +64,6 @@ def create_post_out(name, starttime, endtime, type):
         typedesc = "Extended Leave of Absence"
         description = "will be absent for this time period."
 
-    print(typedesc)
-    print(description)
-
     # body
     event = {
         'summary': '{0} '.format(name) + typedesc,
@@ -120,9 +117,3 @@ def get_post_outs():
         print(datetime.datetime.strptime(start[:-6], "%Y-%m-%dT%H:%M:%S").strftime('%a, %b %d, %Y %I:%M %p'), datetime.datetime.strptime(start[:-6], "%Y-%m-%dT%H:%M:%S").strftime('%a, %b %d, %Y %I:%M %p'), event['summary'])
 
     return events
-
-
-if __name__ == '__main__':
-    #get_post_outs()
-    create_post_out("Ripparian", "2016-12-28T09:00:00", "2016-12-29T00:00:00", "late")
-    #list_cals()
